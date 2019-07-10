@@ -1,0 +1,111 @@
+<div>
+  <section class="navbar">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+
+    <mat-menu class="navbar" #menu="matMenu">
+      <button (click)="clickPeople()" mat-menu-item>People</button>
+      <button (click)="clickFilms()" mat-menu-item>Films</button>
+      <button (click)="clickShips()" mat-menu-item>Star Ships</button>
+    </mat-menu>
+  </section>
+
+
+  <section class="title">
+    <h2 class="th2">Star Wars API Search</h2>
+    <p class="tp">
+      Pick a category to search from, and enter a name of a character, star ship, or film, then give it a go!
+    </p>
+  </section>
+
+
+  <section class="search">
+    <form [formGroup]="swapiSearch" (ngSubmit)="searchInfo()" >
+      <mat-form-field class="inputs">
+        <input matInput formControlName="userSearch" placeholder="Search here" required>
+      </mat-form-field>
+      
+
+      <!-- (click)="fetchData()"   -->
+      <button 
+        
+        mat-raised-button 
+        color="primary"
+        class="inputs"
+        >
+        Search the API
+      </button>
+        
+      <!-- <mat-form-field class="inputs">
+        <mat-select 
+          formControlName="category"
+          placeholder="Choose Category"
+          required>
+            <mat-option value="people">People</mat-option>
+            <mat-option value="films">Films</mat-option>
+            <mat-option value="starships">Star Ships</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+    </form>
+  </section>
+
+
+  <section class="fetch-data">
+      <!-- <div *ngIf="articles.length !== 0; else trySearch"> -->
+
+          <!-- Now onto the ngIf(specific category is selected) {ngFor loop through the data } -->
+    
+          <!-- People Category -->
+          <div *ngIf="category == 'people'">
+              <div *ngFor="let article of articles" class="card">
+                  <!-- Data goes here -->
+                  <h6>Name: {{ article.name }}</h6>
+                  <ul>
+                    <li>Height: {{article.results.height}}</li>
+                    <li>Mass: {{article.mass}}</li>
+                    <li>Hair_color: {{article.results.hair_color}}</li>
+                    <li>Skin_color: {{article.results.skin_color}}</li>
+                    <li>Eye_color: {{article.results.eye_color}}</li>
+                    <li>Gender: {{article.results.gender}}</li>
+                  </ul>
+              </div>
+          </div>
+    
+          <!-- People Category -->
+          <div *ngIf="category == 'starships'">
+              <div *ngFor="let article of articles" class="card">
+                  <!-- Data goes here -->
+                  <h6>Name: {{article.results.name}}</h6>
+                  <ul>
+                    <li>Model: {{article.results.model}}</li>
+                    <li>Manufacturer: {{article.results.manufacturer</li>
+                    <li>Starship Class: {{article.results.starship_class}}</li>
+                  </ul>
+                  
+              </div>
+          </div>
+    
+          <!-- People Category -->
+          <div *ngIf="category == 'films'">
+              <div *ngFor="let article of articles" class="card">
+                  <!-- Data goes here -->
+                  <h6>Title: {{article.results.title}}</h6>
+                  <ul>
+                    <li>Episode: {{article.results.episode_id}}</li>
+                    <li>Director: {{article.results.director}}</li>
+                    <li>Producer: {{article.results.producer}}</li>
+                  </ul>
+                  <h5>Opening Crawl</h5>
+                  <p>{{article.results.opening_crawl}}</p>
+              </div>
+          </div>
+          
+    
+        <!-- </div> -->
+  </section>
+
+
+
+  <!-- <ng-template #trySearch>
+    <p>Click menu and select a category, then search something!</p>
+  </ng-template> -->
+</div>

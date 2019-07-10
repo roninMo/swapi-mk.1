@@ -1,0 +1,53 @@
+<section class="fetch-data">
+      <div *ngIf="searchData.length !== 0; else trySearch">
+
+          <!-- Now onto the ngIf(specific category is selected) {ngFor loop through the data } -->
+    
+          <!-- People Category -->
+          <div ngIf="category == 'people'">
+              <div ngFor="let article of searchData | async" class="card">
+                  <!-- Data goes here -->
+                  <h6>Name: {{ article.name }}</h6>
+                  <ul>
+                    <li>Height: {{article.results.height}}</li>
+                    <li>Mass: {{article.mass}}</li>
+                    <li>Hair_color: {{article.results.hair_color}}</li>
+                    <li>Skin_color: {{article.results.skin_color}}</li>
+                    <li>Eye_color: {{article.results.eye_color}}</li>
+                    <li>Gender: {{article.results.gender}}</li>
+                  </ul>
+              </div>
+          </div>
+    
+          <!-- People Category -->
+          <div ngIf="category == 'starships'">
+              <div ngFor="let article of searchData | async" class="card">
+                  <!-- Data goes here -->
+                  <h6>Name: {{article.results.name}}</h6>
+                  <ul>
+                    <li>Model: {{article.results.model}}</li>
+                    <li>Manufacturer: {{article.results.manufacturer</li>
+                    <li>Starship Class: {{article.results.starship_class}}</li>
+                  </ul>
+                  
+              </div>
+          </div>
+    
+          <!-- People Category -->
+          <div ngIf="category == 'films'">
+              <div ngFor="let article of searchData | async" class="card">
+                  <!-- Data goes here -->
+                  <h6>Title: {{article.results.title}}</h6>
+                  <ul>
+                    <li>Episode: {{article.results.episode_id}}</li>
+                    <li>Director: {{article.results.director}}</li>
+                    <li>Producer: {{article.results.producer}}</li>
+                  </ul>
+                  <h5>Opening Crawl</h5>
+                  <p>{{article.results.opening_crawl}}</p>
+              </div>
+          </div>
+          
+    
+        </div>
+  </section>
