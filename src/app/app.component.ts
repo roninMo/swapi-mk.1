@@ -122,7 +122,10 @@ export class AppComponent implements OnInit {
   // People fetch!
   peopleFetch() : void { 
     this.dbService.getPeople().subscribe(people => {
+      console.log('people', people);
       this.articles = people;
+      this.articles = this.articles.results;
+      console.log(this.articles)
     })
     console.log('people fetch call!', this.articles);
   }
@@ -130,7 +133,10 @@ export class AppComponent implements OnInit {
   // Ship fetch!
   shipFetch() : void {
     this.dbService.getStarships().subscribe(ships => {
+      console.log('people', ships);
       this.articles = ships;
+      this.articles = this.articles.results;
+      console.log(this.articles)
     })
     console.log('ship fetch call!', this.articles)
   }
@@ -138,7 +144,10 @@ export class AppComponent implements OnInit {
   // Film fetch!
   filmFetch() : void { 
     this.dbService.getFilms().subscribe(films => {
+      console.log('people', films);
       this.articles = films;
+      this.articles = this.articles.results;
+      console.log(this.articles)
     })
   }
 

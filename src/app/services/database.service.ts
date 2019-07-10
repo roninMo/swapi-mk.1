@@ -25,9 +25,6 @@ export class DatabaseService {
   constructor(private http: HttpClient, private data: DataService) {  }
   ngOnInit() { // Initializes the searchterm of the url
     this.data.currentMessage.subscribe(pass => this.urlPass = pass);
-
-    this.peopleUrl = this.peopleUrl + this.urlPass; 
-
   }
 
 
@@ -38,16 +35,19 @@ export class DatabaseService {
 
   // Get People
   getPeople() : Observable<People[]> {
-    return this.http.get<People[]>(this.peopleUrl);
+    this.data.currentMessage.subscribe(pass => this.urlPass = pass);
+    return this.http.get<People[]>(this.peopleUrl + this.urlPass);
   }
 
   // Get Starships
   getStarships() : Observable<Starships[]> {
-    return this.http.get<Starships[]>(this.shipsUrl);
+    this.data.currentMessage.subscribe(pass => this.urlPass = pass);
+    return this.http.get<Starships[]>(this.shipsUrl + this.urlPass);
   }
 
   // Get Films 
   getFilms() : Observable<Films[]> {
-    return this.http.get<Films[]>(this.filmsUrl);
+    this.data.currentMessage.subscribe(pass => this.urlPass = pass);
+    return this.http.get<Films[]>(this.filmsUrl + this.urlPass);
   }
 }
