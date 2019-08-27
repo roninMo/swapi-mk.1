@@ -86,6 +86,10 @@ export class AppComponent implements OnInit {
     this.category = "films";
     console.log(this.category);
   }
+  clickPlanets() {
+    this.category = "planets";
+    console.log(this.category);
+  }
 
 
 
@@ -114,6 +118,8 @@ export class AppComponent implements OnInit {
         } else if (this.category == 'films') {
           this.filmFetch();
 
+        } else if (this.category == 'planets') {
+          this.planetFetch();
         }
       }
     
@@ -151,6 +157,15 @@ export class AppComponent implements OnInit {
     })
   }
 
+    // Planet fetch!
+    planetFetch() : void { 
+      this.dbService.getPlanets().subscribe(planets => {
+        console.log('people', planets);
+        this.articles = planets;
+        this.articles = this.articles.results;
+        console.log(this.articles)
+      })
+    }
 
 
 }

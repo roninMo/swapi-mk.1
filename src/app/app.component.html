@@ -1,11 +1,12 @@
 <div>
   <section class="navbar">
-    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <button mat-button [matMenuTriggerFor]="menu">Choose Search Category</button>
 
     <mat-menu class="navbar" #menu="matMenu">
       <button (click)="clickPeople()" mat-menu-item>People</button>
       <button (click)="clickFilms()" mat-menu-item>Films</button>
       <button (click)="clickShips()" mat-menu-item>Star Ships</button>
+      <button (click)="clickPlanets()" mat-menu-item>Planets</button>
     </mat-menu>
   </section>
 
@@ -57,14 +58,16 @@
           <!-- People Category -->
           <div *ngIf="category == 'people'">
               <div *ngFor="let article of articles" class="card">
+                  <h2>Results:</h2>
+                  <br/>
                   <!-- Data goes here -->
                   <h3>Name: {{ article.name }}</h3>
                   <ul>
                     <li>Height: {{articleheight}}</li>
                     <li>Mass: {{article.mass}}</li>
-                    <li>Hair_color: {{articlehair_color}}</li>
-                    <li>Skin_color: {{article.skin_color}}</li>
-                    <li>Eye_color: {{article.eye_color}}</li>
+                    <li>Hair color: {{articlehair_color}}</li>
+                    <li>Skin color: {{article.skin_color}}</li>
+                    <li>Eye color: {{article.eye_color}}</li>
                     <li>Gender: {{article.gender}}</li>
                   </ul>
               </div>
@@ -73,6 +76,8 @@
           <!-- People Category -->
           <div *ngIf="category == 'starships'">
               <div *ngFor="let article of articles" class="card">
+                  <h2>Results:</h2>
+                  <br/>
                   <!-- Data goes here -->
                   <h3>Name: {{article.name}}</h3>
                   <ul>
@@ -87,6 +92,8 @@
           <!-- People Category -->
           <div *ngIf="category == 'films'">
               <div *ngFor="let article of articles" class="card">
+                  <h2>Results:</h2>
+                  <br/>
                   <!-- Data goes here -->
                   <h3>Title: {{article.title}}</h3>
                   <ul>
@@ -98,7 +105,23 @@
                   <p>{{article.opening_crawl}}</p>
               </div>
           </div>
-          
+
+                  <!-- Planets Category -->
+                  <div *ngIf="category == 'planets'">
+                    <div *ngFor="let article of articles" class="card">
+                        <h2>Results:</h2>
+                        <br/>
+                        <!-- Data goes here -->
+                        <h3>Name: {{article.name}}</h3>
+                        <ul>
+                          <li>Diameter: {{article.diameter}}</li>
+                          <li>Gravity: {{article.gravity}}</li>
+                          <li>Population: {{article.population}}</li>
+                          <li>Climate: {{article.climate}}</li>
+                          <li>Terrain: {{article.terrain}}</li>
+                        </ul>
+                    </div>
+                </div>
     
         <!-- </div> -->
   </section>

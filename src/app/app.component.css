@@ -10,7 +10,7 @@ h2 {
 * Nav Section!
 *********************/
 .navbar { 
-    background-color: #F5F5F5;
+    background-color: rgb(189, 207, 255);
     width: 100%;
     padding: 1rem;
 
@@ -23,7 +23,7 @@ h2 {
 *********************/
 .title {
     text-align: center;
-    background-color: rgb(184, 166, 166);
+    background-color: #3F51B5;
     padding: 2rem;
 
 }
@@ -61,4 +61,7 @@ h2 {
 *********************/
 .card {
     margin: 2rem;
+    border-width: 1px;
+    border: 1px solid;
+    padding: 1rem;
 }

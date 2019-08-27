@@ -10,6 +10,7 @@ import { Post } from '../models/post'; // Test to connect to db
 import { Starships } from '../models/starships';
 import { Films } from '../models/films';
 import { People } from '../models/people';
+import { Planets } from '../models/planets';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class DatabaseService {
   private peopleUrl = 'https://swapi.co/api/people/';
   private shipsUrl = 'https://swapi.co/api/starships/';
   private filmsUrl = 'https://swapi.co/api/films/';
+  private planetsUrl = 'https://swapi.co/api/planets/';
 
 
   constructor(private http: HttpClient, private data: DataService) {  }
@@ -49,5 +51,11 @@ export class DatabaseService {
   getFilms() : Observable<Films[]> {
     this.data.currentMessage.subscribe(pass => this.urlPass = pass);
     return this.http.get<Films[]>(this.filmsUrl + this.urlPass);
+  }
+
+  //Get Planets
+  getPlanets() : Observable<Planets[]> {
+    this.data.currentMessage.subscribe(pass => this. urlPass = pass);
+    return this.http.get<Planets[]>(this.planetsUrl + this.urlPass);
   }
 }
